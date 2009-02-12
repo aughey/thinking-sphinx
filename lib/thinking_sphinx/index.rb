@@ -276,13 +276,26 @@ module ThinkingSphinx
         
     def set_source_database_settings(source)
       config = @model.connection.instance_variable_get(:@config)
-      
-      source.sql_host = config[:host]           || "localhost"
-      source.sql_user = config[:username]       || config[:user] || ""
-      source.sql_pass = (config[:password].to_s || "").gsub('#', '\#')
-      source.sql_db   = config[:database]
-      source.sql_port = config[:port]
-      source.sql_sock = config[:socket]
+
+      if config.nil?
+        config = {
+          :database => 'db/development.sqlite3'
+        }
+      end
+#        source.sql_host = "nohost"
+#        source.sql_user = "nouser"
+#        source.sql_pass = "nopass"
+#        source.sql_db = "sqlite3"
+#        source.sql_port = "31416"
+#        source.sql_sock = "smelly"
+#      else
+        source.sql_host = config[:host]           || "localhost"
+        source.sql_user = config[:username]       || config[:user] || ""
+        source.sql_pass = (config[:password].to_s || "").gsub('#', '\#')
+        source.sql_db   = config[:database]
+        source.sql_port = config[:port]
+        source.sql_sock = config[:socket]
+#      end
     end
     
     def set_source_attributes(source)
