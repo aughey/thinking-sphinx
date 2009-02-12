@@ -16,6 +16,8 @@ module ThinkingSphinx
         ThinkingSphinx::MysqlAdapter.new model
       when "ActiveRecord::ConnectionAdapters::PostgreSQLAdapter"
         ThinkingSphinx::PostgreSQLAdapter.new model
+      when "ActiveRecord::ConnectionAdapters::SQLite3Adapter"
+        ThinkingSphinx::SQLite3Adapter.new model
       else
         raise "Invalid Database Adapter: Sphinx only supports MySQL and PostgreSQL, not #{model.connection.class.name}"
       end

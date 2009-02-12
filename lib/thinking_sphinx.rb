@@ -23,6 +23,7 @@ require 'thinking_sphinx/deltas'
 require 'thinking_sphinx/adapters/abstract_adapter'
 require 'thinking_sphinx/adapters/mysql_adapter'
 require 'thinking_sphinx/adapters/postgresql_adapter'
+require 'thinking_sphinx/adapters/sqlite3_adapter'
 
 ActiveRecord::Base.send(:include, ThinkingSphinx::ActiveRecord)
 
